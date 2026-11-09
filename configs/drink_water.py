@@ -1,0 +1,33 @@
+"""Drink-water policy and bootstrap."""
+
+DRINK_WATER_TARGET_FEATURES = 11
+DRINK_WATER_OBS_SIZE = DRINK_WATER_TARGET_FEATURES
+DRINK_WATER_ROLLOUT_STEPS = 20
+DRINK_WATER_HIDDEN_SIZE = 12
+# Classic cap: ``player_drink`` is in [0, 9]; each interaction +1 via game_logic.
+DRINK_WATER_MAX_DRINK = 9
+# Bootstrap: dehydrated bottle + no thirst buildup (Craftax resets often use thirst=0).
+DRINK_WATER_PLAYER_START_DRINK = 0
+DRINK_WATER_PLAYER_START_THIRST = 0.0
+# Dense reward for each +1 drink from water; optional one-shot when reaching ``MAX_DRINK``.
+DRINK_WATER_PER_DRINK_REWARD = 10.0
+DRINK_WATER_FULL_BONUS = 6.0
+# Best min Manhattan distance to any WATER tile in the full map.
+DRINK_WATER_REACH_MANHATTAN_THRESHOLD = 1
+DRINK_WATER_LEARNING_RATE = 0.05
+DRINK_WATER_STD_START = 0.2
+DRINK_WATER_STD_END = 0.05
+DRINK_WATER_POLICY_TEMPERATURE_START = 2.0
+DRINK_WATER_POLICY_TEMPERATURE_END = 0.5
+DRINK_WATER_POLICY_TEMPERATURE_ANNEAL_FRACTION = 1.0
+DRINK_WATER_POLICY_TEMPERATURE = DRINK_WATER_POLICY_TEMPERATURE_START
+DRINK_WATER_GREEDY_FINETUNE_FRACTION = 0.25
+DRINK_WATER_ROLLOUT_REFRESH_EVERY = 10
+DRINK_WATER_NUM_ROLLOUTS_START = 8
+DRINK_WATER_NUM_ROLLOUTS_ANNEAL_FRACTION = 1.0
+# Normalizes direction-to-water features in the handcrafted obs (crop is 7×9).
+DRINK_WATER_FOV_NORM_CHEBYSHEV_R = 4
+# Bootstrap: clears mobs, then paints a WATER patch reachable in the symbolic crop.
+DRINK_WATER_SPAWN_MIN_CHEBYSHEV_R = 2
+DRINK_WATER_SPAWN_MAX_CHEBYSHEV_R = 4
+DRINK_WATER_WATER_PATCH_SIDE = 1  # odd; Chebyshev half-width (side-1)/2 from center cell
